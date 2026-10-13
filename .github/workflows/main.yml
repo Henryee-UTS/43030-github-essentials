@@ -13,3 +13,10 @@ jobs:
       # Step 1: Checkout the repository
       - name: Checkout Repository
         uses: actions/checkout@v3
+
+      # Step 2: Update index.html
+      - name: Update HTML for Taehyoun
+        if: github.actor == 'Henryee-UTS'
+        run: |
+          sed -i '/<\/body>/i <p>Updated by Henryee-UTS on '"$(date)"'</p>' index.html
+          cat index.html
